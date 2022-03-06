@@ -1,9 +1,11 @@
 
 const inquirer = require('inquirer');
+const fs = require('fs');
 const Employee = require('./lib/Employee');
 const Engineer = require('./lib/Engineer');
 const Intern = require('./lib/Intern');
 const Manager = require('./lib/Manager');
+
 
 
 
@@ -104,6 +106,18 @@ function init(){
     inquirer.prompt(questions).then((answers) => {
         console.log(answers);
         const {managerName, employeeId, emailAddress, officeNumber,} = answers;
+        const employee = new Employee(managerName,employeeId,emailAddress,'Manager')
+        const manager = new Manager(officeNumber);
+
+        console.log("---Manager---");
+        employee.getName();
+        employee.getId();
+        employee.getEmail();
+        manager.getRole();
+        manager.getOffice();
+
+        card = [employee.name,employee.id,employee.email,manager.role,`Office Number: ${manager.officeNumber}`]
+        managerCard(card);
         menuChoice();
        
     })
@@ -143,7 +157,7 @@ function menuChoice(){
 }
 
 
-init();
+
 
 // add Intern Function --------------------------------
 function addIntern(answers){
@@ -156,6 +170,9 @@ function addIntern(answers){
     employee.getEmail();
     intern.getRole();
     intern.getSchool();
+
+    card = [employee.name,employee.id,employee.email,intern.role,`School: ${intern.school}`];
+    generateCard(card);
 }
 
 // add Engineer Function--------------------------------------------------------
@@ -165,43 +182,73 @@ function addEngineer(answers){
     const employee = new Employee(engName,engId,engEmail,'Engineer');
     const engineer = new Engineer(engGithub);
     console.log('---Engineer---');
-    employee.getName();
-    employee.getId();
-    employee.getEmail();
-    engineer.getRole();
-    engineer.getGithub();
+     employee.getName();
+     employee.getId();
+     employee.getEmail();
+     engineer.getRole();
+     engineer.getGithub();
+
+    card = [employee.name,employee.id,employee.email,engineer.role,`Github:${engineer.github}`]
+    generateCard(card);
 }
-// const intern = new Intern("UWO");
 
-// console.log("---Intern---");
-// intern.getName();
-// intern.getId();
-// intern.getEmail();
-// intern.getRole();
-// intern.getSchool();
+// generate card function --------------------------------
 
-// const employee = new Employee('John',42,'john42@gmail.com','Manager')
+function generateCard(card){
+    fileName = './dist/index.html'
+    const content = `
+    <div class = "card">
+        <div class = 'cardHeader'>
+        <h2> Name: ${card[0]}</h2>
+        <h3> Role:${card[3]}</h3>
+        </div>
+        <div class = 'cardBody'>
+        <p> ID: ${card[1]}</p>
+        <a href="mailto:${card[2]}">Email: ${card[2]}</a>
+        <p>${card[4]}</p>
+    </div>
+    `
+    fs.appendFile(fileName, content, (err) =>
+      err ? console.log(err) : console.log('')
+    );
+    
+}
 
-// console.log("---Employee---");
-// employee.getName();
-// employee.getId();
-// employee.getEmail();
-// employee.getRole();
+// manager card init function
 
-// const manager = new Manager(69)
+function managerCard(card){
 
-// console.log('---Manager---');
-// manager.getName();
-// manager.getId();
-// manager.getEmail();
-// manager.getRole();
-// manager.getOffice();
+    fileName = './dist/index.html'
+    const content = `<!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+        <link rel="stylesheet" type="text/css" href="./style.css">
+        <title>Team Viewer</title>
+    </head>
+    
+    <header class = "header">My Team</header>
+    <body>
+    
+    <div class = "card">
+        <div class = 'cardHeader'>
+        <h2> Name: ${card[0]}</h2>
+        <h3> Role:${card[3]}</h3>
+        </div>
+        <div class = 'cardBody'>
+        <p> ID: ${card[1]}</p>
+        <a href="mailto:${card[2]}">Email: ${card[2]}</a>
+        <p>${card[4]}</p>
+    </div>
+    `
+    fs.appendFile(fileName, content, (err) =>
+      err ? console.log(err) : console.log('')
+    );
 
-// const engineer = new Engineer('Loliman');
+}
 
-// console.log("---Engineer---");
-// engineer.getName();
-// engineer.getId();
-// engineer.getEmail();
-// engineer.getRole();
-// engineer.getGithub();
+
+init();

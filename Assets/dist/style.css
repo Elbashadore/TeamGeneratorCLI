@@ -1,0 +1,19 @@
+body{
+    margin: 0px;
+    align-items: center;
+    
+}
+
+header{
+    text-align: center;
+    background-color: #BA94E0;
+    line-height: 40px;
+}
+
+.card{
+    align-items: center;
+}
+
+.cardBody{
+    background-color: grey;
+}
