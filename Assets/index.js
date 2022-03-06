@@ -1,5 +1,9 @@
 
 const inquirer = require('inquirer');
+const Employee = require('./lib/Employee');
+const Engineer = require('./lib/Engineer');
+const Intern = require('./lib/Intern');
+const Manager = require('./lib/Manager');
 
 
 
@@ -137,4 +141,40 @@ function menuChoice(){
 }
 
 
-init();
+// init();
+
+
+const intern = new Intern("UWO");
+
+console.log("---Intern---");
+intern.getName();
+intern.getId();
+intern.getEmail();
+intern.getRole();
+intern.getSchool();
+
+const employee = new Employee('John',42,'john42@gmail.com','Manager')
+
+console.log("---Employee---");
+employee.getName();
+employee.getId();
+employee.getEmail();
+employee.getRole();
+
+const manager = new Manager(69)
+
+console.log('---Manager---');
+manager.getName();
+manager.getId();
+manager.getEmail();
+manager.getRole();
+manager.getOffice();
+
+const engineer = new Engineer('Loliman');
+
+console.log("---Engineer---");
+engineer.getName();
+engineer.getId();
+engineer.getEmail();
+engineer.getRole();
+engineer.getGithub();
