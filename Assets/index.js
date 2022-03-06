@@ -119,11 +119,13 @@ function menuChoice(){
             case 'Add engineer':
                 inquirer.prompt(engQues).then((answers)=>
                 {
+                addEngineer(answers);
                 menuChoice();
                 })
                 break;
             case 'Add intern':
                 inquirer.prompt(intQues).then((answers)=>{
+                addIntern(answers);
                 menuChoice();
                 })
                 break;
@@ -141,40 +143,65 @@ function menuChoice(){
 }
 
 
-// init();
+init();
 
+// add Intern Function --------------------------------
+function addIntern(answers){
+    const {intName, intId, intEmail,intSchool} = answers
+    const employee = new Employee(intName, intId, intEmail,'Intern')
+    const intern = new Intern(intSchool);
+    console.log("---Intern---");
+    employee.getName();
+    employee.getId();
+    employee.getEmail();
+    intern.getRole();
+    intern.getSchool();
+}
 
-const intern = new Intern("UWO");
+// add Engineer Function--------------------------------------------------------
 
-console.log("---Intern---");
-intern.getName();
-intern.getId();
-intern.getEmail();
-intern.getRole();
-intern.getSchool();
+function addEngineer(answers){
+    const {engName,engId,engEmail,engGithub} = answers
+    const employee = new Employee(engName,engId,engEmail,'Engineer');
+    const engineer = new Engineer(engGithub);
+    console.log('---Engineer---');
+    employee.getName();
+    employee.getId();
+    employee.getEmail();
+    engineer.getRole();
+    engineer.getGithub();
+}
+// const intern = new Intern("UWO");
 
-const employee = new Employee('John',42,'john42@gmail.com','Manager')
+// console.log("---Intern---");
+// intern.getName();
+// intern.getId();
+// intern.getEmail();
+// intern.getRole();
+// intern.getSchool();
 
-console.log("---Employee---");
-employee.getName();
-employee.getId();
-employee.getEmail();
-employee.getRole();
+// const employee = new Employee('John',42,'john42@gmail.com','Manager')
 
-const manager = new Manager(69)
+// console.log("---Employee---");
+// employee.getName();
+// employee.getId();
+// employee.getEmail();
+// employee.getRole();
 
-console.log('---Manager---');
-manager.getName();
-manager.getId();
-manager.getEmail();
-manager.getRole();
-manager.getOffice();
+// const manager = new Manager(69)
 
-const engineer = new Engineer('Loliman');
+// console.log('---Manager---');
+// manager.getName();
+// manager.getId();
+// manager.getEmail();
+// manager.getRole();
+// manager.getOffice();
 
-console.log("---Engineer---");
-engineer.getName();
-engineer.getId();
-engineer.getEmail();
-engineer.getRole();
-engineer.getGithub();
+// const engineer = new Engineer('Loliman');
+
+// console.log("---Engineer---");
+// engineer.getName();
+// engineer.getId();
+// engineer.getEmail();
+// engineer.getRole();
+// engineer.getGithub();
