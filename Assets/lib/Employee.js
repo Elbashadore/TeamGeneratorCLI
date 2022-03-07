@@ -7,27 +7,26 @@ class Employee {
     }
 
     getName(){
-        console.log(`Name: ${this.name}`);
+        return this.name;
     }
 
     getId(){
-        console.log(`Id: ${this.id}`);
+        return this.id;
     }
 
     getEmail(){
-        console.log(`Email: ${this.email}`);
+        return this.email
     }
 
     getRole(role){
     if (this.role === undefined) {
-        this.role = 'Employee';}
-    console.log(`Role: ${this.role}`);
+        this.role = 'Employee';
+    return(this.role)};
         
 
     }
 }
-
-
-
-
+const employee = new Employee('John',7,'email')
+let role = employee.getRole();
+console.log(role);
 module.exports = Employee;

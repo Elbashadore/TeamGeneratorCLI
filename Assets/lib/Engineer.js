@@ -7,7 +7,7 @@ class Engineer extends Employee {
     }
 
     getGithub(){
-        console.log(`Github: ${this.github}`);
+        return this.github;
     }
 }
 
