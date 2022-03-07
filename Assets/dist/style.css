@@ -1,19 +1,30 @@
+*{
+    font-family: 'Roboto Condensed', sans-serif;
+}
+
+
 body{
     margin: 0px;
     align-items: center;
+    background-color:#73C2D0;
     
 }
 
 header{
     text-align: center;
-    background-color: #BA94E0;
-    line-height: 40px;
+    background-color: #0C3F47;
+    line-height: 50px;
+    margin-bottom: 10px;
+    color:#D1E1E6;
+    font-size: 40px;
 }
 
-.card{
-    align-items: center;
+
+.cardStyle{
+    background-color:#3A484A;
+    color:#D1E1E6;
 }
 
-.cardBody{
-    background-color: grey;
+.cardHeader{
+    background-color:#198194;
 }

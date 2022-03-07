@@ -197,15 +197,16 @@ function addEngineer(answers){
 function generateCard(card){
     fileName = './dist/index.html'
     const content = `
-    <div class = "card">
-        <div class = 'cardHeader'>
-        <h2> Name: ${card[0]}</h2>
-        <h3> Role:${card[3]}</h3>
+    <div class = "card w-50 p-3 cardStyle text-center">
+        <div class = 'cardHeader w-100'>
+        <h2>${card[0]}</h2>
+        <h3>${card[3]}</h3>
         </div>
-        <div class = 'cardBody'>
+        <div class = 'w-100 cardBody'>
         <p> ID: ${card[1]}</p>
         <a href="mailto:${card[2]}">Email: ${card[2]}</a>
         <p>${card[4]}</p>
+        </div>
     </div>
     `
     fs.appendFile(fileName, content, (err) =>
@@ -226,22 +227,26 @@ function managerCard(card){
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300&display=swap" rel="stylesheet">
         <link rel="stylesheet" type="text/css" href="./style.css">
         <title>Team Viewer</title>
     </head>
     
     <header class = "header">My Team</header>
     <body>
-    
-    <div class = "card">
-        <div class = 'cardHeader'>
-        <h2> Name: ${card[0]}</h2>
-        <h3> Role:${card[3]}</h3>
+    <div class = "container d-flex">
+    <div class = "card w-50 p-3 cardStyle text-center">
+        <div class = 'cardHeader w-100 justify-content-center'>
+        <h2>${card[0]}</h2>
+        <h3>${card[3]}</h3>
         </div>
-        <div class = 'cardBody'>
+        <div class = 'cardBody w-100 justify-content-center'>
         <p> ID: ${card[1]}</p>
         <a href="mailto:${card[2]}">Email: ${card[2]}</a>
         <p>${card[4]}</p>
+        </div>
     </div>
     `
     fs.appendFile(fileName, content, (err) =>
